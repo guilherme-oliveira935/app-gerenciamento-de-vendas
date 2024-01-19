@@ -1,0 +1,100 @@
+#:kivy 2.2.1
+
+<Ajustes>:
+    on_pre_enter: app.exibir_foto_atual()
+    on_pre_enter: app.exibir_codigo()
+    FloatLayout:
+        size_hint_y: 0.4
+        pos_hint: {'right': 1, 'top':1}
+        canvas.before:
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: 'icones/fundo_1_ajustes.png'
+        Image:
+            id: foto_atual
+            size_hint: 0.55, 0.55
+            pos_hint: {'right': 0.76, 'top': 0.9}
+        Image:
+            source: 'icones/fundo_botao.png'
+            size_hint: 0.5, 0.2
+            pos_hint: {'right': 0.73, 'top': 0.3}
+        Label:
+            id: label_codigo
+            font_name: 'fontes/static/Montserrat-ExtraBold.ttf'
+            bold: True
+            color: 1, 1, 1, 1
+            size_hint: 0.3, 0.1
+            pos_hint: {'right': 0.62, 'top': 0.25}
+    FloatLayout:
+        size_hint_y: 0.6
+        pos_hint: {'right': 1, 'top': 0.6}
+        canvas.before:
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: 'icones/fundo_2_ajustes.png'
+        GridLayout:
+            rows: 2
+            size_hint: 1, 0.7
+            pos_hint: {'right': 0.7, 'top': 1}
+
+            BoxLayout:
+                orientation: 'horizontal'
+                size_hint_x: 0.7
+                pos_hint: {'right': 0.85, 'top': 1}
+                ImageButton:
+                    size_hint: 0.6, 0.6
+                    pos_hint: {'right': 0.5, 'top': 0.9}
+                    source: "icones/foto_perfil.png"
+                    on_release: app.mudar_tela("mudar_foto_page")
+                LabelButton:
+                    size_hint: 0.1, 0.1
+                    pos_hint: {'right': 0.8, 'top': 0.8}
+                    text: "MUDAR FOTO DE PERFIL"
+                    bold: True
+                    color: 0.027, 0.733, 0.290, 1
+                    on_release: app.mudar_tela("mudar_foto_page")
+            BoxLayout:
+                size_hint_x: 0.7
+                pos_hint: {'right': 0.85, 'top': 0.6}
+                orientation: 'horizontal'
+                ImageButton:
+                    size_hint: 0.58, 0.58
+                    pos_hint: {'right': 0.5, 'top': 1}
+                    source: "icones/logout.png"
+                    on_release: app.log_out()
+                LabelButton:
+                    size_hint: 0.1, 0.1
+                    pos_hint: {'right': 0.8, 'top': 0.8}
+                    text: "SAIR"
+                    bold: True
+                    color: 0.027, 0.733, 0.290, 1
+                    on_release: app.log_out()
+
+        GridLayout:
+            rows: 1
+            pos_hint: {"right": 1, "top": 0.18}
+            size_hint: 1, 0.12
+            ImageButton:
+                source: "icones/listadevendas.png"
+                on_release: app.mudar_tela('home_page')
+            ImageButton:
+                source: 'icones/todasvendas.png'
+                on_release: app.mudar_tela('listar_todas_vendas_page')
+            ImageButton:
+                source: "icones/adicionar_produto.png"
+                on_release: app.mudar_tela("adicionar_vendas_page")
+            ImageButton:
+                source: "icones/equipe.png"
+                on_release: app.mudar_tela("listar_vendedores_page")
+            ImageButton:
+                source: "icones/settings.png"
+                on_release: app.mudar_tela("ajustes_page")
+
+        
+
+        
+        
+
+

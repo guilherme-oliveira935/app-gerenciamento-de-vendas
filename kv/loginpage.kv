@@ -1,0 +1,52 @@
+#:kivy 2.2.1
+
+<LoginPage>:
+    FloatLayout:
+        canvas:
+            Color:
+                rgba: utils.get_color_from_hex('#BA4406')
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        Image:
+            source: 'icones/logo_generica.png'
+            size_hint: 0.3, 0.3
+            pos_hint: {'right': 0.65, 'top': 0.95}
+
+        TextInput:
+            id: email_input
+            hint_text: "E-mail"
+            pos_hint: {"right": 0.9, "top": 0.6}
+            size_hint: 0.8, 0.1
+        TextInput:
+            id: senha_input
+            password: True
+            hint_text: "Senha"
+            pos_hint: {"right": 0.9, "top": 0.45}
+            size_hint: 0.8, 0.1
+        LabelButton:
+            font_name: 'fontes/Dortmund-ExtraBold.otf'
+            text: '[b]Criar conta[/b]'
+            markup: True
+            pos_hint: {"right": 0.7, "top": 0.3}
+            size_hint: 0.4, 0.1
+            on_release: app.mudar_tela("cadastro_page")
+
+        Label:
+            id: label_status
+            font_name: 'fontes/Dortmund-ExtraBold.otf'
+            color: 0, 0, 1, 1
+            size_hint: 0.3, 0.1
+            pos_hint: {'right': 0.65, 'top': 0.35}
+
+        LabelButton:
+            canvas.before:
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+                    source: 'icones/fundo_botao.png'
+            font_name: 'fontes/Dortmund-ExtraBold.otf'
+            text: 'ENTRAR'
+            pos_hint: {"right": 0.65, "top": 0.2}
+            size_hint: 0.3, 0.1
+            on_release: app.firebase.login_usuario(email_input.text, senha_input.text)

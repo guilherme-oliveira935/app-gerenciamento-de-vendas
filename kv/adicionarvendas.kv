@@ -1,0 +1,138 @@
+#:kivy 2.2.1
+
+<AdicionarVendasPage>:
+    FloatLayout:
+        canvas:
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: "icones/8498634-ai.png"
+
+        # selecionar cliente
+        Label:
+            font_name: 'fontes/static/Montserrat-ExtraBold.ttf'
+            pos_hint: {"right": 1, "top": 0.97}
+            size_hint: 1, 0.05
+            text: "SELECIONE O CLIENTE"
+            bold: True
+            color: 0.027, 0.733, 0.290, 1
+            id: label_selecione_cliente
+
+        ScrollView: 
+            pos_hint: {"right": 1, "top": 0.9}
+            size_hint: 1, 0.15
+            GridLayout:
+                rows: 1
+                id: lista_clientes
+                size_hint_x: None
+                width: self.minimum_width
+                col_default_width: "100dp"
+                col_force_default: True
+
+        #selecionar produto
+        Label:
+            font_name: 'fontes/static/Montserrat-ExtraBold.ttf'
+            pos_hint: {"right": 1, "top": 0.7}
+            size_hint: 1, 0.05
+            text: "SELECIONE O PRODUTO"
+            color: 0.027, 0.733, 0.290, 1
+            bold: True
+            id: label_selecione_produto
+
+        ScrollView: 
+            pos_hint: {"right": 1, "top": 0.63}
+            size_hint: 1, 0.15
+            GridLayout:
+                rows: 1
+                id: lista_produtos
+                size_hint_x: None
+                width: self.minimum_width
+                col_default_width: "100dp"
+                col_force_default: True
+    
+        # selecionar a unidade
+        GridLayout:
+            rows: 1
+            pos_hint: {'right': 0.9, 'top': 0.45}
+            size_hint: 0.8, 0.1
+            id: unidades
+            LabelButton:
+                font_name: 'fontes/static/Montserrat-ExtraBold.ttf'
+                id: unidades_kg
+                text: 'Kg'
+                bold: True
+                color: 0.027, 0.733, 0.290, 1
+                on_release: app.pintar_texto_vendas('unidades_kg', '3')
+            LabelButton:
+                font_name: 'fontes/static/Montserrat-ExtraBold.ttf'
+                id: unidades_unidades
+                text: 'UNIDADES'
+                bold: True
+                color: 0.027, 0.733, 0.290, 1
+                on_release: app.pintar_texto_vendas('unidades_unidades', '3')
+            LabelButton:
+                font_name: 'fontes/static/Montserrat-ExtraBold.ttf'
+                id: unidades_litros
+                text: 'LITROS'
+                bold: True
+                color: 0.027, 0.733, 0.290, 1
+                on_release: app.pintar_texto_vendas('unidades_litros', '3')
+                
+        Label:
+            size_hint: 0.09, 0.09
+            pos_hint: {'right':0.53, 'top': 0.5}
+            id: data
+            text: ''
+            bold: True
+            color: 0.027, 0.733, 0.290, 1 
+            
+        #preço_total
+        GridLayout:
+            rows: 1
+            pos_hint: {'right': 0.9, 'top': 0.35}   
+            size_hint: 0.8, 0.075
+            Label:
+                font_name: 'fontes/static/Montserrat-ExtraBold.ttf'
+                text: 'PREÇO/UNIDADE(R$)'
+                bold: True
+                color: 0.027, 0.733, 0.290, 1
+                id: label_preco_total
+            TextInput:
+                id: preco_total_input
+                hint_text: 'Digite apenas números'
+        #quantidade_total
+        GridLayout:
+            rows: 1
+            pos_hint: {'right': 0.9, 'top': 0.26}   
+            size_hint: 0.8, 0.075
+            Label:
+                font_name: 'fontes/static/Montserrat-ExtraBold.ttf'
+                text: 'QUANTIDADE TOTAL'
+                bold: True
+                color: 0.027, 0.733, 0.290, 1
+                id: label_quantidade_total
+            TextInput:
+                id: quantidade_total_input
+                hint_text: '0'
+        LabelButton:
+            canvas.before:
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+                    source: 'icones/fundo_botao.png'
+            font_name: 'fontes/static/Montserrat-ExtraBold.ttf'
+            text: 'CANCELAR'
+            pos_hint: {"right": 0.3, "top": 0.12}
+            size_hint: 0.2, 0.1
+            on_release: app.resetar()
+        LabelButton:
+            canvas.before:
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+                    source: 'icones/fundo_botao.png'
+            font_name: 'fontes/static/Montserrat-ExtraBold.ttf'
+            text: 'ADICIONAR'
+            pos_hint: {"right": 0.85, "top": 0.12}
+            size_hint: 0.2, 0.1
+            on_release: app.adicionar_venda(preco_total_input.text, quantidade_total_input.text)

@@ -1,0 +1,45 @@
+#:kivy 2.2.1
+#:import utils kivy.utils
+#:include kv/HomePage.kv
+#:include kv/ajustes.kv
+#:include kv/loginpage.kv
+#:include kv/cadastropage.kv
+#:include kv/adicionarvendas.kv
+#:include kv/mudarfotoperfil.kv
+#:include kv/listarvendedores.kv
+#:include kv/listartodasvendas.kv
+
+FloatLayout:
+    canvas:
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    ScreenManager:
+        id: screen_manager
+        LoginPage:
+            name: "login_page"
+            id: login_page
+        CadastroPage:
+            name: "cadastro_page"
+            id: cadastro_page
+        HomePage:
+            name: "home_page"
+            id: home_page
+        AdicionarVendasPage:
+            name: "adicionar_vendas_page"
+            id: adicionar_vendas_page
+        Ajustes:
+            name: "ajustes_page"
+            id: ajustes_page
+        MudarFotoPerfilPage:
+            name: 'mudar_foto_page'
+            id: mudar_foto_page
+        ListarVendedoresPage:
+            name: 'listar_vendedores_page'
+            id: listar_vendedores_page
+        ListarTodasVendasPage:
+            name: 'listar_todas_vendas_page'
+            id: listar_todas_vendas_page
+    
+        
+        

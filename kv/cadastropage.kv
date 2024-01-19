@@ -1,0 +1,50 @@
+#:kivy 2.2.1
+
+<CadastroPage>:
+    FloatLayout:
+        canvas:
+            Color:
+                rgb:  utils.get_color_from_hex("#BA4406")
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        TextInput:
+            id: nome_usuario
+            hint_text: "Nome"
+            pos_hint: {"right": 0.9, "top": 0.85}
+            size_hint: 0.8, 0.1
+        TextInput:
+            id: email_input
+            hint_text: "E-mail"
+            pos_hint: {"right": 0.9, "top": 0.7}
+            size_hint: 0.8, 0.1
+        TextInput:
+            id: senha_input
+            password: True
+            hint_text: "Senha"
+            pos_hint: {"right": 0.9, "top": 0.55}
+            size_hint: 0.8, 0.1
+        Label:
+            id: label_status
+            font_name: 'fontes/Dortmund-ExtraBold.otf'
+            color: 0, 0, 1, 1
+            size_hint: 0.3, 0.1
+            pos_hint: {'right': 0.65, 'top': 0.45}
+        LabelButton:
+            font_name: 'fontes/Dortmund-ExtraBold.otf'
+            text: 'Ir para Login'
+            pos_hint: {"right": 0.58, "top": 0.4}
+            size_hint: 0.15, 0.1
+            on_release: app.mudar_tela("login_page")
+        LabelButton:
+            canvas.before:
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+                    source: 'icones/fundo_botao.png'
+            font_name: 'fontes/Dortmund-ExtraBold.otf'
+            text: 'CADASTRAR'
+            pos_hint: {"right": 0.75, "top": 0.25}
+            size_hint: 0.5, 0.15
+            on_release: app.firebase.cadastrar_usuario(email_input.text, senha_input.text, nome_usuario.text)    
+    

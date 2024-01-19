@@ -1,0 +1,48 @@
+#:kivy 2.2.1
+
+<HomePage>:
+    on_pre_enter: app.carregar_vendas_usuario()
+    on_pre_enter: app.exibir_total_vendas()
+    FloatLayout:
+        canvas:
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: "icones/8498634-ai.png"
+        Label:
+            font_size: 30
+            font_name: 'fontes/Righteous-Regular.ttf'
+            pos_hint: {"right": 0.55, "top": 1}
+            size_hint: 0.1, 0.1
+            id: label_total_vendas
+            markup: True
+        ScrollView:
+            pos_hint: {"right": 0.9, "top": 0.8}
+            size_hint: 0.8, 0.63
+            GridLayout:
+                cols: 1
+                id: lista_vendas
+                size_hint_y: None
+                spacing: 2, 20
+                height: self.minimum_height
+                row_default_height: "90dp"
+                row_force_default: True
+        GridLayout:
+            rows: 1
+            pos_hint: {"right": 1, "top": 0.12}
+            size_hint: 1, 0.06
+            ImageButton:
+                source: "icones/listadevendas.png"
+                on_release: app.mudar_tela('home_page')
+            ImageButton:
+                source: 'icones/todasvendas.png'
+                on_release: app.mudar_tela('listar_todas_vendas_page')
+            ImageButton:
+                source: "icones/adicionar_produto.png"
+                on_release: app.mudar_tela("adicionar_vendas_page")
+            ImageButton:
+                source: "icones/equipe.png"
+                on_release: app.mudar_tela("listar_vendedores_page")
+            ImageButton:
+                source: "icones/settings.png"
+                on_release: app.mudar_tela("ajustes_page")

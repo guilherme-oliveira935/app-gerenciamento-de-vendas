@@ -1,0 +1,38 @@
+#:kivy 2.2.1
+
+<MudarFotoPerfilPage>:
+    on_pre_enter: app.carregar_fotos_perfil()
+    on_pre_enter: app.exibir_foto_atual()
+    FloatLayout:
+        canvas:
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: "icones/8498634-ai.png"
+        ImageButton:
+            source: "icones/voltar.png"
+            pos_hint: {'right': 0.1, 'top': 0.98}
+            size_hint: 0.1, 0.1
+            on_release: app.mudar_tela('ajustes_page')
+        Image:
+            id: foto_atual
+            pos_hint: {'right': 0.65, 'top': 0.98}
+            size_hint: 0.3, 0.3
+        Label:
+            font_name: 'fontes/Dortmund-ExtraBold.otf'
+            pos_hint: {"right": 1, "top": 0.67}
+            size_hint: 1, 0.05
+            text: "SELECIONE UMA NOVA FOTO"
+            color: 0.027, 0.733, 0.290, 1
+            id: label_selecione_foto
+        ScrollView:
+            pos_hint: {"right": 1, "top": 0.6}
+            size_hint: 1, 0.63
+            GridLayout:
+                cols: 3
+                id: lista_fotos_perfil
+                size_hint_y: None
+                spacing: 0, 20
+                height: self.minimum_height
+                row_default_height: "90dp"
+                row_force_default: True
